@@ -21,9 +21,7 @@
   @keyframes sponsorFade{0%{opacity:0;transform:translateY(8px)}15%{opacity:1;transform:translateY(0)}85%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-8px)}}
   @keyframes heroFloat{0%,100%{transform:scale(1.06) translateY(0)}50%{transform:scale(1.06) translateY(-10px)}}
 
-  /* ═══ OVERLAY SECTION ═══ */
   .overlay{width:1920px;margin:0 auto;padding:0 24px}
-
   .header-row{display:flex;height:56px;margin-top:8px}
   .header-blue{flex:1;display:flex;align-items:center;padding-left:24px;gap:14px;background:linear-gradient(90deg,#003faa,#0060dd 85%,#0070ee00);clip-path:polygon(0 0,96% 0,92% 100%,0 100%);position:relative;overflow:hidden}
   .header-red{flex:1;display:flex;align-items:center;justify-content:flex-end;padding-right:24px;gap:14px;background:linear-gradient(270deg,#aa1020,#dd2040 85%,#dd204000);clip-path:polygon(8% 0,100% 0,100% 100%,4% 100%);position:relative;overflow:hidden}
@@ -38,7 +36,6 @@
   .bans-row{display:flex;align-items:center;padding:8px 0;margin-top:2px}
   .bans-side{flex:1;display:flex;gap:8px;justify-content:center}
   .bans-center{width:200px;text-align:center;flex-shrink:0;font-size:10px;letter-spacing:4px;color:#3a3e55;font-family:'Barlow Condensed';font-weight:700}
-
   .ban-circle{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:all .2s}
   .ban-circle.empty{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05)}
   .ban-circle.filled{border:2px solid rgba(255,255,255,.06);filter:grayscale(.7) brightness(.5);animation:banIn .25s ease-out}
@@ -51,7 +48,6 @@
   .picks-row{display:flex;align-items:stretch;margin-top:2px}
   .picks-side{flex:1;display:flex;gap:3px}
   .picks-center{width:200px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,#0c0f1a,#080a12);border:1px solid rgba(255,255,255,.04);padding:12px 8px}
-
   .pick-card{flex:1;min-height:260px;position:relative;overflow:hidden;transition:all .3s;border-top:2px solid #12151f;background:#0a0c14}
   .pick-card.filled{animation:heroIn .4s ease-out}
   .pick-card.active{animation:glowPulse 2s infinite}
@@ -68,41 +64,29 @@
   .players-side{flex:1;display:flex;gap:3px}
   .players-center{width:200px;flex-shrink:0}
   .player-name{flex:1;text-align:center;padding:7px 2px;font-size:11px;font-weight:800;letter-spacing:2px;font-family:'Barlow Condensed';text-transform:uppercase;transition:all .3s}
-
   .timer-bar{width:90px;height:4px;background:#1a1e2e;border-radius:2px;overflow:hidden;margin-top:4px}
   .timer-fill{height:100%;border-radius:2px;transition:width .9s linear}
-
   .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:999;background:#e02040;padding:10px 28px;border-radius:6px;font-size:14px;font-family:'Barlow',sans-serif;font-weight:700;letter-spacing:1px;box-shadow:0 4px 24px rgba(255,0,0,.4);animation:fadeIn .2s}
 
-  /* ═══ ADMIN BAR ═══ */
   .admin-bar{width:1920px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:'Inter',sans-serif;border-top:1px solid rgba(255,255,255,.08);margin-top:10px;background:rgba(20,24,40,.95)}
   .admin-bar .abtn{padding:7px 16px;border-radius:6px;font-weight:600;font-size:12px;letter-spacing:.5px;cursor:pointer;border:none;transition:all .15s;font-family:'Inter',sans-serif}
   .admin-bar .abtn:disabled{opacity:.3;cursor:not-allowed}
-  .admin-bar .abtn.primary{background:#2979ff;color:#fff}
-  .admin-bar .abtn.primary:hover:not(:disabled){background:#4090ff}
-  .admin-bar .abtn.warn{background:#e09900;color:#fff}
-  .admin-bar .abtn.warn:hover:not(:disabled){background:#f0aa22}
-  .admin-bar .abtn.danger{background:#dd3355;color:#fff}
-  .admin-bar .abtn.danger:hover:not(:disabled){background:#ee4466}
-  .admin-bar .abtn.ghost{background:rgba(255,255,255,.08);color:#a0aac0;border:1px solid rgba(255,255,255,.12)}
-  .admin-bar .abtn.ghost:hover{background:rgba(255,255,255,.14);color:#d0d8ee}
+  .admin-bar .abtn.primary{background:#2979ff;color:#fff}.admin-bar .abtn.primary:hover:not(:disabled){background:#4090ff}
+  .admin-bar .abtn.warn{background:#e09900;color:#fff}.admin-bar .abtn.warn:hover:not(:disabled){background:#f0aa22}
+  .admin-bar .abtn.danger{background:#dd3355;color:#fff}.admin-bar .abtn.danger:hover:not(:disabled){background:#ee4466}
+  .admin-bar .abtn.ghost{background:rgba(255,255,255,.08);color:#a0aac0;border:1px solid rgba(255,255,255,.12)}.admin-bar .abtn.ghost:hover{background:rgba(255,255,255,.14);color:#d0d8ee}
   .admin-bar .sep{height:24px;width:1px;background:rgba(255,255,255,.12)}
   .admin-bar label{font-size:13px;color:#8a95b8;display:flex;align-items:center;gap:6px;font-weight:500}
   .admin-bar input[type=number]{width:52px;padding:6px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#d0d8ee;font-size:13px;font-family:'Inter';outline:none}
-  .admin-bar input[type=checkbox]{accent-color:#1a6fff}
 
-  /* ═══ ADMIN PANEL ═══ */
   .admin-panel{width:1920px;margin:0 auto;padding:18px 24px;display:flex;gap:20px;flex-wrap:wrap;font-family:'Inter',sans-serif;border-top:1px solid rgba(255,255,255,.06);background:rgba(18,22,38,.95)}
   .admin-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:7px;min-width:180px}
   .admin-card .card-title{font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:4px}
   .admin-card input,.admin-card textarea{padding:7px 11px;border-radius:6px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#d0d8ee;font-size:13px;font-family:'Inter',sans-serif;outline:none;width:100%;transition:border-color .15s}
   .admin-card input:focus,.admin-card textarea:focus{border-color:rgba(100,140,255,.4)}
   .admin-card textarea{resize:vertical;font-family:'Inter',monospace;font-size:11px}
-  .admin-card .player-input{padding:5px 9px;font-size:12px}
   .admin-card .abtn{padding:6px 14px;border-radius:5px;font-weight:600;font-size:11px;cursor:pointer;border:none;font-family:'Inter'}
-  .admin-card .abtn.sm{padding:5px 12px;font-size:11px}
 
-  /* ═══ HERO PICKER ═══ */
   .hero-picker-wrap{width:1920px;margin:0 auto;padding:12px 24px 20px;border-top:1px solid rgba(255,255,255,.06);background:rgba(14,18,32,.95)}
   .filters{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center;font-family:'Inter',sans-serif}
   .filters .search-input{padding:8px 12px 8px 32px;border-radius:6px;width:220px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#d0d8ee;font-size:13px;font-family:'Inter';outline:none}
@@ -111,16 +95,15 @@
   .filters .role-btn.active{background:rgba(255,255,255,.12);color:#e0e6f4;border-color:rgba(255,255,255,.18)}
   .filters .role-btn:hover{background:rgba(255,255,255,.08);color:#b0bacc}
   .turn-ind{margin-left:auto;font-size:12px;font-weight:700;letter-spacing:2px;font-family:'Barlow Condensed';padding:6px 16px;border-radius:6px;animation:pulse 1.5s infinite}
-
   .hero-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:5px;max-height:320px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#252a3a transparent}
   .hero-cell{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 3px 6px;border-radius:8px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.035);transition:all .12s;position:relative;overflow:hidden;cursor:default}
-  .hero-cell.available{cursor:pointer}
-  .hero-cell.available:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);transform:scale(1.04)}
+  .hero-cell.available{cursor:pointer}.hero-cell.available:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);transform:scale(1.04)}
   .hero-cell.used{opacity:.2;pointer-events:none}
   .hero-mini-avatar{border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff}
   .hero-cell-name{font-size:10px;font-weight:600;color:#8a95b0;font-family:'Inter';max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .hero-used-line{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
   .hero-used-line div{width:55%;height:2px;background:#ff2244;transform:rotate(-45deg)}
+  .loading-msg{text-align:center;padding:40px;font-family:'Inter';color:#6a7590;font-size:14px}
 </style>
 </head>
 <body>
@@ -131,52 +114,11 @@
 <script type="text/babel">
 const{useState,useEffect,useCallback,useRef,useMemo}=React;
 
-const HEROES=[
-  {id:"aamon",name:"Aamon",role:"Assassin",image:"https://static.wikia.nocookie.net/mobile-legends/images/c/c8/Hero1091-portrait.png/revision/latest?cb=20251225192214"},{id:"akai",name:"Akai",role:"Tank"},{id:"aldous",name:"Aldous",role:"Fighter"},
-  {id:"alice",name:"Alice",role:"Mage"},{id:"alpha",name:"Alpha",role:"Fighter"},{id:"alucard",name:"Alucard",role:"Fighter"},
-  {id:"angela",name:"Angela",role:"Support"},{id:"argus",name:"Argus",role:"Fighter"},{id:"arlott",name:"Arlott",role:"Fighter"},
-  {id:"atlas",name:"Atlas",role:"Tank"},{id:"aulus",name:"Aulus",role:"Fighter"},{id:"aurora",name:"Aurora",role:"Mage"},
-  {id:"badang",name:"Badang",role:"Fighter"},{id:"balmond",name:"Balmond",role:"Fighter"},{id:"bane",name:"Bane",role:"Fighter"},
-  {id:"barats",name:"Barats",role:"Tank"},{id:"baxia",name:"Baxia",role:"Tank"},{id:"beatrix",name:"Beatrix",role:"Marksman"},
-  {id:"belerick",name:"Belerick",role:"Tank"},{id:"benedetta",name:"Benedetta",role:"Assassin"},{id:"brody",name:"Brody",role:"Marksman"},
-  {id:"bruno",name:"Bruno",role:"Marksman"},{id:"carmilla",name:"Carmilla",role:"Support"},{id:"cecilion",name:"Cecilion",role:"Mage"},
-  {id:"chang_e",name:"Chang'e",role:"Mage"},{id:"chip",name:"Chip",role:"Support"},{id:"chou",name:"Chou",role:"Fighter"},
-  {id:"cici",name:"Cici",role:"Fighter"},{id:"claude_h",name:"Claude",role:"Marksman"},{id:"clint",name:"Clint",role:"Marksman"},
-  {id:"cyclops",name:"Cyclops",role:"Mage"},{id:"diggie",name:"Diggie",role:"Support",image:"https://static.wikia.nocookie.net/mobile-legends/images/1/17/Hero481-portrait.png/revision/latest?cb=20241021141804"},{id:"dyrroth",name:"Dyrroth",role:"Fighter"},
-  {id:"edith",name:"Edith",role:"Tank"},{id:"esmeralda",name:"Esmeralda",role:"Mage"},{id:"estes",name:"Estes",role:"Support"},
-  {id:"eudora",name:"Eudora",role:"Mage"},{id:"fanny",name:"Fanny",role:"Assassin"},{id:"faramis",name:"Faramis",role:"Support"},
-  {id:"floryn",name:"Floryn",role:"Support"},{id:"franco",name:"Franco",role:"Tank"},{id:"fredrinn",name:"Fredrinn",role:"Fighter"},
-  {id:"freya",name:"Freya",role:"Fighter"},{id:"gatotkaca",name:"Gatotkaca",role:"Tank"},{id:"gloo",name:"Gloo",role:"Tank"},
-  {id:"gord",name:"Gord",role:"Mage"},{id:"granger",name:"Granger",role:"Marksman"},{id:"grock",name:"Grock",role:"Tank"},
-  {id:"guinevere",name:"Guinevere",role:"Fighter"},{id:"gusion",name:"Gusion",role:"Assassin"},{id:"hanabi",name:"Hanabi",role:"Marksman"},
-  {id:"hanzo",name:"Hanzo",role:"Assassin"},{id:"harith",name:"Harith",role:"Mage"},{id:"harley",name:"Harley",role:"Assassin"},
-  {id:"hayabusa",name:"Hayabusa",role:"Assassin"},{id:"helcurt",name:"Helcurt",role:"Assassin"},{id:"hilda",name:"Hilda",role:"Fighter"},
-  {id:"hylos",name:"Hylos",role:"Tank"},{id:"irithel",name:"Irithel",role:"Marksman"},{id:"ixia",name:"Ixia",role:"Marksman"},
-  {id:"jawhead",name:"Jawhead",role:"Fighter"},{id:"johnson",name:"Johnson",role:"Tank"},{id:"joy",name:"Joy",role:"Assassin"},
-  {id:"julian",name:"Julian",role:"Assassin"},{id:"kadita",name:"Kadita",role:"Mage"},{id:"kagura",name:"Kagura",role:"Mage"},
-  {id:"kaja",name:"Kaja",role:"Support"},{id:"kalea",name:"Kalea",role:"Support"},{id:"karina",name:"Karina",role:"Assassin"},
-  {id:"karrie",name:"Karrie",role:"Marksman"},{id:"khaleed",name:"Khaleed",role:"Fighter"},{id:"khufra",name:"Khufra",role:"Tank"},
-  {id:"kimmy",name:"Kimmy",role:"Marksman"},{id:"lancelot",name:"Lancelot",role:"Assassin"},{id:"lapu_lapu",name:"Lapu-Lapu",role:"Fighter"},
-  {id:"layla",name:"Layla",role:"Marksman"},{id:"leomord",name:"Leomord",role:"Fighter"},{id:"lesley",name:"Lesley",role:"Marksman"},
-  {id:"ling",name:"Ling",role:"Assassin"},{id:"lolita",name:"Lolita",role:"Tank"},{id:"lukas",name:"Lukas",role:"Fighter"},
-  {id:"lunox",name:"Lunox",role:"Mage"},{id:"luo_yi",name:"Luo Yi",role:"Mage"},{id:"lylia",name:"Lylia",role:"Mage"},
-  {id:"marcel",name:"Marcel",role:"Support"},{id:"martis",name:"Martis",role:"Fighter"},{id:"masha",name:"Masha",role:"Fighter"},
-  {id:"mathilda",name:"Mathilda",role:"Support"},{id:"melissa",name:"Melissa",role:"Marksman"},{id:"minotaur",name:"Minotaur",role:"Tank"},
-  {id:"minsitthar",name:"Minsitthar",role:"Fighter"},{id:"miya",name:"Miya",role:"Marksman"},{id:"moskov",name:"Moskov",role:"Marksman"},
-  {id:"nana",name:"Nana",role:"Mage"},{id:"natalia",name:"Natalia",role:"Assassin"},{id:"natan",name:"Natan",role:"Marksman"},
-  {id:"nolan",name:"Nolan",role:"Assassin"},{id:"novaria",name:"Novaria",role:"Mage"},{id:"obsidia",name:"Obsidia",role:"Marksman"},
-  {id:"odette",name:"Odette",role:"Mage"},{id:"paquito",name:"Paquito",role:"Fighter"},{id:"pharsa",name:"Pharsa",role:"Mage"},
-  {id:"phoveus",name:"Phoveus",role:"Fighter"},{id:"popol",name:"Popol & Kupa",role:"Marksman"},{id:"rafaela",name:"Rafaela",role:"Support"},
-  {id:"roger",name:"Roger",role:"Fighter"},{id:"ruby",name:"Ruby",role:"Fighter"},{id:"saber",name:"Saber",role:"Assassin"},
-  {id:"selena",name:"Selena",role:"Assassin"},{id:"silvanna",name:"Silvanna",role:"Fighter"},{id:"sora",name:"Sora",role:"Fighter",image:"https://static.wikia.nocookie.net/mobile-legends/images/0/00/Hero1311-portrait.png/revision/latest?cb=20251218014024"},
-  {id:"sun",name:"Sun",role:"Fighter"},{id:"suyou",name:"Suyou",role:"Assassin"},{id:"terizla",name:"Terizla",role:"Fighter"},
-  {id:"thamuz",name:"Thamuz",role:"Fighter"},{id:"tigreal",name:"Tigreal",role:"Tank"},{id:"uranus",name:"Uranus",role:"Tank"},
-  {id:"vale",name:"Vale",role:"Mage"},{id:"valentina",name:"Valentina",role:"Mage"},{id:"valir",name:"Valir",role:"Mage"},
-  {id:"vexana",name:"Vexana",role:"Mage"},{id:"wanwan",name:"Wanwan",role:"Marksman"},{id:"x_borg",name:"X.Borg",role:"Fighter"},
-  {id:"xavier",name:"Xavier",role:"Mage"},{id:"yss",name:"Yi Sun-shin",role:"Marksman"},{id:"yin",name:"Yin",role:"Fighter"},
-  {id:"yu_zhong",name:"Yu Zhong",role:"Fighter"},{id:"yve",name:"Yve",role:"Mage"},{id:"zetian",name:"Zetian",role:"Mage"},
-  {id:"zhask",name:"Zhask",role:"Mage"},{id:"zhuxin",name:"Zhuxin",role:"Mage"},{id:"zilong",name:"Zilong",role:"Fighter"},
-];
+// Role map for heroes (fallback)
+const ROLE_MAP={"Miya":"Marksman","Balmond":"Fighter","Saber":"Assassin","Alice":"Mage","Nana":"Mage","Tigreal":"Tank","Alucard":"Fighter","Karina":"Assassin","Akai":"Tank","Franco":"Tank","Bane":"Fighter","Bruno":"Marksman","Clint":"Marksman","Rafaela":"Support","Eudora":"Mage","Zilong":"Fighter","Fanny":"Assassin","Layla":"Marksman","Minotaur":"Tank","Lolita":"Tank","Hayabusa":"Assassin","Freya":"Fighter","Gord":"Mage","Natalia":"Assassin","Kagura":"Mage","Chou":"Fighter","Sun":"Fighter","Alpha":"Fighter","Ruby":"Fighter","Yi Sun-shin":"Marksman","Moskov":"Marksman","Johnson":"Tank","Cyclops":"Mage","Estes":"Support","Hilda":"Fighter","Aurora":"Mage","Lapu-Lapu":"Fighter","Vexana":"Mage","Roger":"Fighter","Karrie":"Marksman","Gatotkaca":"Tank","Jawhead":"Fighter","Irithel":"Marksman","Grock":"Tank","Argus":"Fighter","Odette":"Mage","Lancelot":"Assassin","Diggie":"Support","Hylos":"Tank","Zhask":"Mage","Helcurt":"Assassin","Pharsa":"Mage","Lesley":"Marksman","Martis":"Fighter","Hanabi":"Marksman","Chang'e":"Mage","Kaja":"Support","Selena":"Assassin","Barats":"Tank","Aldous":"Fighter","Claude":"Marksman","Valir":"Mage","Badang":"Fighter","Khufra":"Tank","Granger":"Marksman","Guinevere":"Fighter","Esmeralda":"Mage","Kadita":"Mage","Cecilion":"Mage","Carmilla":"Support","Atlas":"Tank","Popol and Kupa":"Marksman","Yu Zhong":"Fighter","Luo Yi":"Mage","Benedetta":"Assassin","Brody":"Marksman","Paquito":"Fighter","Alice":"Mage","Lunox":"Mage","Belerick":"Tank","Baxia":"Tank","Minsitthar":"Fighter","Thamuz":"Fighter","Khaleed":"Fighter","Wanwan":"Marksman","Silvanna":"Fighter","X.Borg":"Fighter","Dyrroth":"Fighter","Harith":"Mage","Gusion":"Assassin","Beatrix":"Marksman","Faramis":"Support","Leomord":"Fighter","Hanzo":"Assassin","Terizla":"Fighter","Kimmy":"Marksman","Mathilda":"Support","Phoveus":"Fighter","Edith":"Tank","Masha":"Fighter","Harley":"Assassin","Lylia":"Mage","Vale":"Mage","Angela":"Support","Floryn":"Support","Valentina":"Mage","Aamon":"Assassin","Aulus":"Fighter","Natan":"Marksman","Uranus":"Tank","Gloo":"Tank","Fredrinn":"Fighter","Joy":"Assassin","Xavier":"Mage","Melissa":"Marksman","Yin":"Fighter","Arlott":"Fighter","Novaria":"Mage","Nolan":"Assassin","Ixia":"Marksman","Cici":"Fighter","Chip":"Support","Julian":"Assassin","Zhuxin":"Mage","Suyou":"Assassin","Lukas":"Fighter","Kalea":"Support","Zetian":"Mage","Obsidia":"Marksman","Sora":"Fighter","Marcel":"Support"};
+
+// Portrait overrides (wiki full portraits)
+const PORTRAIT_MAP={"Aamon":"https://static.wikia.nocookie.net/mobile-legends/images/c/c8/Hero1091-portrait.png/revision/latest?cb=20251225192214","Diggie":"https://static.wikia.nocookie.net/mobile-legends/images/1/17/Hero481-portrait.png/revision/latest?cb=20241021141804","Sora":"https://static.wikia.nocookie.net/mobile-legends/images/0/00/Hero1311-portrait.png/revision/latest?cb=20251218014024"};
 
 const ROLES=["All","Tank","Fighter","Assassin","Mage","Marksman","Support"];
 const ROLE_ICONS={Tank:"🛡",Fighter:"⚔",Assassin:"🗡",Mage:"✦",Marksman:"◎",Support:"♥"};
@@ -201,6 +143,8 @@ function hcv(id){return`hsl(${hu(id)},65%,50%)`}
 function ini(n){return n.split(/[\s\-']+/).map(w=>w[0]).join("").slice(0,2).toUpperCase()}
 
 function App(){
+  const[heroes,setHeroes]=useState([]);
+  const[loading,setLoading]=useState(true);
   const[s,setS]=useState({
     step:-1,
     blue:{picks:[],bans:[],name:"AURORA",tag:"RORA",logo:"",players:["DOMENGKITE","YUE","DEMONKITE","EDWARD","LIGHT"]},
@@ -219,41 +163,71 @@ function App(){
   const[obsMode]=useState(()=>new URLSearchParams(window.location.search).get("obs")==="true");
   const tRef=useRef(null),ttRef=useRef(null);
 
+  // Fetch heroes from API
+  useEffect(()=>{
+    fetch("https://mlbb.rone.dev/api/heroes?size=150&index=1&order=desc&lang=en")
+      .then(r=>r.json())
+      .then(data=>{
+        const list=data.data.records.map(r=>{
+          const name=r.data.hero.data.name;
+          const head=r.data.hero.data.head;
+          const heroId=r.data.hero_id;
+          const id=name.toLowerCase().replace(/[\s'.&]+/g,"_").replace(/_+$/,"");
+          return{
+            id,name,heroId,
+            role:ROLE_MAP[name]||"Fighter",
+            head,
+            image:PORTRAIT_MAP[name]||null,
+          };
+        }).sort((a,b)=>a.name.localeCompare(b.name));
+        setHeroes(list);
+        setLoading(false);
+      })
+      .catch(()=>{
+        // Fallback: use role map keys
+        const list=Object.entries(ROLE_MAP).map(([name,role])=>{
+          const id=name.toLowerCase().replace(/[\s'.&]+/g,"_").replace(/_+$/,"");
+          return{id,name,role,head:null,image:PORTRAIT_MAP[name]||null};
+        }).sort((a,b)=>a.name.localeCompare(b.name));
+        setHeroes(list);
+        setLoading(false);
+      });
+  },[]);
+
   useEffect(()=>{document.body.classList.toggle("obs-mode",obsMode)},[obsMode]);
   useEffect(()=>{const iv=setInterval(()=>setSpIdx(p=>(p+1)%Math.max(s.sponsors.length,1)),3000);return()=>clearInterval(iv)},[s.sponsors.length]);
 
   const cur=s.step>=0&&s.step<DRAFT_SEQ.length?DRAFT_SEQ[s.step]:null;
   const used=useMemo(()=>{const st=new Set();["blue","red"].forEach(t=>{s[t].picks.forEach(h=>st.add(h.id));s[t].bans.forEach(h=>st.add(h.id))});return st},[s.blue,s.red]);
-  const filtered=useMemo(()=>HEROES.filter(h=>(role==="All"||h.role===role)&&(!search||h.name.toLowerCase().includes(search.toLowerCase()))),[search,role]);
+  const filtered=useMemo(()=>heroes.filter(h=>(role==="All"||h.role===role)&&(!search||h.name.toLowerCase().includes(search.toLowerCase()))),[search,role,heroes]);
 
   const flash=useCallback(m=>{setToast(m);if(ttRef.current)clearTimeout(ttRef.current);ttRef.current=setTimeout(()=>setToast(null),2000)},[]);
 
-  function loadImages(json){try{const map=JSON.parse(json);Object.entries(map).forEach(([k,url])=>{const h=HEROES.find(x=>x.name.toLowerCase()===k.toLowerCase()||x.id===k);if(h)h.image=url});flash("Loaded "+Object.keys(map).length+" images");setImgJson(json)}catch(e){flash("Invalid JSON")}}
+  function loadImages(json){try{const map=JSON.parse(json);Object.entries(map).forEach(([k,url])=>{const h=heroes.find(x=>x.name.toLowerCase()===k.toLowerCase()||x.id===k);if(h)h.image=url});flash("Loaded "+Object.keys(map).length+" images");setImgJson(json)}catch(e){flash("Invalid JSON")}}
 
   useEffect(()=>{
     if(tRef.current)clearInterval(tRef.current);
-    if(!s.started||s.paused||s.done||s.step<0)return;
+    if(!s.started||s.paused||s.done||s.step<0||!heroes.length)return;
     tRef.current=setInterval(()=>{
       setS(p=>{
-        if(p.timer<=1){const u=new Set([...p.blue.picks,...p.red.picks,...p.blue.bans,...p.red.bans].map(x=>x.id));const av=HEROES.filter(h=>!u.has(h.id));if(!av.length||p.step>=DRAFT_SEQ.length)return{...p,done:true};return sel(p,av[Math.floor(Math.random()*av.length)])}
+        if(p.timer<=1){const u=new Set([...p.blue.picks,...p.red.picks,...p.blue.bans,...p.red.bans].map(x=>x.id));const av=heroes.filter(h=>!u.has(h.id));if(!av.length||p.step>=DRAFT_SEQ.length)return{...p,done:true};return sel(p,av[Math.floor(Math.random()*av.length)])}
         return{...p,timer:p.timer-1};
       });
     },1000);
     return()=>clearInterval(tRef.current);
-  },[s.started,s.paused,s.done,s.step]);
+  },[s.started,s.paused,s.done,s.step,heroes]);
 
   function sel(st,hero){const a=DRAFT_SEQ[st.step];if(!a)return{...st,done:true};const k=a.type==="ban"?"bans":"picks";const nx=st.step+1;return{...st,[a.team]:{...st[a.team],[k]:[...st[a.team][k],hero]},step:nx,timer:st.td,done:nx>=DRAFT_SEQ.length,history:[...st.history,{hero,action:a.type,team:a.team}]}}
-
   function pick(hero){if(!s.started||s.paused||s.done)return flash("Draft not active");if(used.has(hero.id))return flash("Hero unavailable");setSearch("");setS(p=>sel(p,hero))}
 
   const tp=s.td>0?s.timer/s.td:0;
-
   const E=React.createElement;
+
   return E("div",null,
     toast&&E("div",{className:"toast"},toast),
 
-    /* ═══ OVERLAY ═══ */
     E("div",{className:"overlay"},
+      // Header
       E("div",{className:"header-row"},
         E("div",{className:"header-blue"},
           s.blue.logo&&E("img",{src:s.blue.logo,className:"header-bg-logo"}),
@@ -267,11 +241,13 @@ function App(){
           s.red.logo&&E("img",{src:s.red.logo,className:"header-bg-logo"})
         )
       ),
+      // Bans
       E("div",{className:"bans-row"},
         E("div",{className:"bans-side"},Array.from({length:5}).map((_,i)=>BanC(s.blue.bans[i],"blue",!s.blue.bans[i]&&s.blue.bans.length===i&&cur?.team==="blue"&&cur?.type==="ban",i))),
         E("div",{className:"bans-center"},"BANS"),
         E("div",{className:"bans-side"},Array.from({length:5}).map((_,i)=>BanC(s.red.bans[i],"red",!s.red.bans[i]&&s.red.bans.length===i&&cur?.team==="red"&&cur?.type==="ban",i)))
       ),
+      // Picks + Center
       E("div",{className:"picks-row"},
         E("div",{className:"picks-side"},Array.from({length:5}).map((_,i)=>PickC(s.blue.picks[i],"blue",i,!s.blue.picks[i]&&s.blue.picks.length===i&&cur?.team==="blue"&&cur?.type==="pick",s.blue.logo,s.blue.tag))),
         E("div",{className:"picks-center"},
@@ -297,6 +273,7 @@ function App(){
         ),
         E("div",{className:"picks-side"},Array.from({length:5}).map((_,i)=>PickC(s.red.picks[i],"red",i,!s.red.picks[i]&&s.red.picks.length===i&&cur?.team==="red"&&cur?.type==="pick",s.red.logo,s.red.tag)))
       ),
+      // Player names
       E("div",{className:"players-row"},
         E("div",{className:"players-side"},s.blue.players.map((n,i)=>E("div",{key:i,className:"player-name",style:{background:s.blue.picks[i]?"linear-gradient(180deg,#0050bb,#003080)":"linear-gradient(180deg,#0a1030,#080c22)",borderBottom:`3px solid ${s.blue.picks[i]?"#0070ee":"#0a1030"}`,color:s.blue.picks[i]?"#fff":"#2a3a5a"}},n))),
         E("div",{className:"players-center"}),
@@ -304,7 +281,7 @@ function App(){
       )
     ),
 
-    /* ═══ ADMIN BAR ═══ */
+    // Admin bar
     E("div",{className:"admin-bar"},
       E("button",{className:"abtn primary",disabled:s.started&&!s.done,onClick:()=>setS(p=>({...p,started:true,step:0,timer:p.td,done:false,paused:false}))},"▶ START"),
       E("button",{className:"abtn warn",disabled:!s.started||s.done,onClick:()=>setS(p=>({...p,paused:!p.paused}))},s.paused?"▶ RESUME":"⏸ PAUSE"),
@@ -312,63 +289,27 @@ function App(){
       E("div",{className:"sep"}),
       E("label",null,"Timer ",E("input",{type:"number",min:5,max:120,value:s.td,onChange:e=>setS(p=>({...p,td:+e.target.value||DT}))})),
       E("div",{className:"sep"}),
+      loading?E("span",{style:{fontSize:12,color:"#6acc8a"}},"⟳ Loading heroes from API..."):E("span",{style:{fontSize:12,color:"#6acc8a"}},heroes.length+" heroes loaded ✓"),
       E("div",{style:{marginLeft:"auto",display:"flex",gap:8}},
         E("button",{className:"abtn ghost",onClick:()=>setAdmin(p=>!p)},admin?"✕ CLOSE SETTINGS":"⚙ SETTINGS"),
         E("button",{className:"abtn ghost",onClick:()=>setPicker(p=>!p)},picker?"▼ HIDE HEROES":"▲ SHOW HEROES")
       )
     ),
 
-    /* ═══ HERO PICKER + PLAYER NAMES ═══ */
-    picker&&E("div",{className:"hero-picker-wrap"},
-      /* Quick player name editor - always visible above heroes */
-      E("div",{style:{display:"flex",gap:24,marginBottom:10,padding:"8px 0",borderBottom:"1px solid rgba(255,255,255,.04)"}},
-        E("div",{style:{flex:1}},
-          E("div",{style:{fontSize:10,letterSpacing:2,fontWeight:700,color:"#4dabff",marginBottom:4,fontFamily:"'Inter'"}},"BLUE PLAYERS"),
-          E("div",{style:{display:"flex",gap:4}},
-            s.blue.players.map((pn,pi)=>E("input",{key:pi,value:pn,onChange:e=>{const np=[...s.blue.players];np[pi]=e.target.value;setS(p=>({...p,blue:{...p.blue,players:np}}))},style:{flex:1,padding:"5px 8px",borderRadius:5,border:"1px solid rgba(0,100,255,.15)",background:"rgba(0,60,180,.08)",color:"#8ab8ee",fontSize:11,fontFamily:"'Inter'",outline:"none",textAlign:"center"}}))
-          )
-        ),
-        E("div",{style:{flex:1}},
-          E("div",{style:{fontSize:10,letterSpacing:2,fontWeight:700,color:"#ff6677",marginBottom:4,fontFamily:"'Inter'",textAlign:"right"}},"RED PLAYERS"),
-          E("div",{style:{display:"flex",gap:4}},
-            s.red.players.map((pn,pi)=>E("input",{key:pi,value:pn,onChange:e=>{const np=[...s.red.players];np[pi]=e.target.value;setS(p=>({...p,red:{...p.red,players:np}}))},style:{flex:1,padding:"5px 8px",borderRadius:5,border:"1px solid rgba(255,30,60,.15)",background:"rgba(180,20,40,.08)",color:"#ee8a8a",fontSize:11,fontFamily:"'Inter'",outline:"none",textAlign:"center"}}))
-          )
-        )
-      ),
-      E("div",{className:"filters"},
-        E("div",{style:{position:"relative"}},
-          E("input",{className:"search-input",value:search,onChange:e=>setSearch(e.target.value),placeholder:"Search hero..."}),
-          E("span",{style:{position:"absolute",left:10,top:"50%",transform:"translateY(-50%)",fontSize:13,color:"#3a4260",pointerEvents:"none"}},"⌕")
-        ),
-        ROLES.map(r=>E("button",{key:r,className:`role-btn${role===r?" active":""}`,onClick:()=>setRole(r)},(r!=="All"?(ROLE_ICONS[r]||"")+" ":"")+r.toUpperCase())),
-        cur&&E("div",{className:"turn-ind",style:{background:cur.team==="blue"?"rgba(0,100,255,.1)":"rgba(255,30,60,.1)",border:`1px solid ${cur.team==="blue"?"rgba(0,100,255,.25)":"rgba(255,30,60,.25)"}`,color:cur.team==="blue"?"#4dabff":"#ff5577"}},(cur.team==="blue"?s.blue.tag:s.red.tag)+" "+cur.type.toUpperCase())
-      ),
-      E("div",{className:"hero-grid"},
-        filtered.map(hero=>{
-          const u=used.has(hero.id),act=s.started&&!s.paused&&!s.done&&!u;
-          return E("div",{key:hero.id,className:`hero-cell${act?" available":""}${u?" used":""}`,onClick:()=>act&&pick(hero)},
-            hero.image
-              ?E("img",{src:hero.image,style:{width:40,height:40,borderRadius:6,objectFit:"cover",filter:u?"grayscale(1)":"none",boxShadow:`0 2px 8px ${hc(hero.id)}55`}})
-              :E("div",{className:"hero-mini-avatar",style:{width:40,height:40,fontSize:14,background:`linear-gradient(135deg,${hc(hero.id)},${hcl(hero.id)})`,boxShadow:`0 2px 8px ${hc(hero.id)}44`,filter:u?"grayscale(1)":"none"}},ini(hero.name)),
-            E("span",{className:"hero-cell-name"},hero.name),
-            u&&E("div",{className:"hero-used-line"},E("div"))
-          )
-        })
-      )
-    ),
-
-    /* ═══ ADMIN PANEL (settings - below heroes) ═══ */
+    // Admin panel
     admin&&E("div",{className:"admin-panel"},
       ["blue","red"].map(t=>E("div",{key:t,className:"admin-card",style:{borderColor:t==="blue"?"rgba(0,100,255,.15)":"rgba(255,30,60,.15)"}},
         E("div",{className:"card-title",style:{color:t==="blue"?"#4dabff":"#ff6677"}},t.toUpperCase()+" TEAM"),
         E("input",{value:s[t].name,onChange:e=>setS(p=>({...p,[t]:{...p[t],name:e.target.value}})),placeholder:"Team Name"}),
         E("input",{value:s[t].tag,onChange:e=>setS(p=>({...p,[t]:{...p[t],tag:e.target.value}})),placeholder:"Tag (short)"}),
-        E("input",{value:s[t].logo,onChange:e=>setS(p=>({...p,[t]:{...p[t],logo:e.target.value}})),placeholder:"Logo URL (png/svg)"})
+        E("input",{value:s[t].logo,onChange:e=>setS(p=>({...p,[t]:{...p[t],logo:e.target.value}})),placeholder:"Logo URL (png/svg)"}),
+        E("div",{style:{fontSize:9,color:"#6a7590",fontWeight:600,letterSpacing:1,marginTop:4}},"PLAYERS"),
+        s[t].players.map((pn,pi)=>E("input",{key:pi,value:pn,onChange:e=>{const np=[...s[t].players];np[pi]=e.target.value;setS(p=>({...p,[t]:{...p[t],players:np}}))}}))
       )),
       E("div",{className:"admin-card",style:{minWidth:240}},
-        E("div",{className:"card-title",style:{color:"#6acc8a"}},"HERO IMAGES"),
+        E("div",{className:"card-title",style:{color:"#6acc8a"}},"HERO PORTRAITS"),
         E("textarea",{rows:5,value:imgJson,onChange:e=>setImgJson(e.target.value),placeholder:'{"Sora":"https://...","Aamon":"https://..."}'}),
-        E("button",{className:"abtn sm",style:{background:"#1a8855",color:"#fff",marginTop:4},onClick:()=>loadImages(imgJson)},"LOAD IMAGES")
+        E("button",{className:"abtn",style:{background:"#1a8855",color:"#fff",marginTop:4},onClick:()=>loadImages(imgJson)},"LOAD PORTRAITS")
       ),
       E("div",{className:"admin-card",style:{minWidth:220}},
         E("div",{className:"card-title",style:{color:"#ccaa44"}},"SPONSORS"),
@@ -377,15 +318,42 @@ function App(){
           E("input",{value:s.sponsorLogos[si]||"",onChange:e=>{const nl=[...s.sponsorLogos];nl[si]=e.target.value;setS(p=>({...p,sponsorLogos:nl}))},placeholder:"Logo URL",style:{flex:1}})
         )),
         E("div",{style:{display:"flex",gap:4,marginTop:4}},
-          E("button",{className:"abtn sm",style:{background:"#886611",color:"#fff"},onClick:()=>setS(p=>({...p,sponsors:[...p.sponsors,""],sponsorLogos:[...p.sponsorLogos,""]}))},"+ ADD"),
-          s.sponsors.length>1&&E("button",{className:"abtn sm",style:{background:"#663333",color:"#fff"},onClick:()=>setS(p=>({...p,sponsors:p.sponsors.slice(0,-1),sponsorLogos:p.sponsorLogos.slice(0,-1)}))},"− REMOVE")
+          E("button",{className:"abtn",style:{background:"#886611",color:"#fff"},onClick:()=>setS(p=>({...p,sponsors:[...p.sponsors,""],sponsorLogos:[...p.sponsorLogos,""]}))},"+ ADD"),
+          s.sponsors.length>1&&E("button",{className:"abtn",style:{background:"#663333",color:"#fff"},onClick:()=>setS(p=>({...p,sponsors:p.sponsors.slice(0,-1),sponsorLogos:p.sponsorLogos.slice(0,-1)}))},"− REMOVE")
         )
       ),
       E("div",{className:"admin-card"},
         E("div",{className:"card-title",style:{color:"#7a8aaa"}},"MATCH INFO"),
         E("input",{value:s.matchType,onChange:e=>setS(p=>({...p,matchType:e.target.value})),placeholder:"Match type"}),
         E("input",{value:s.matchWeek,onChange:e=>setS(p=>({...p,matchWeek:e.target.value})),placeholder:"Match week"}),
-        E("label",{style:{fontSize:11,color:"#6a7590",display:"flex",alignItems:"center",gap:4,fontWeight:500,marginTop:2}},"Game # ",E("input",{type:"number",min:1,max:9,value:s.gameNum,onChange:e=>setS(p=>({...p,gameNum:+e.target.value||1})),style:{width:40,padding:"4px 6px",borderRadius:4,border:"1px solid rgba(255,255,255,.08)",background:"rgba(255,255,255,.04)",color:"#c0c8dd",fontSize:12,fontFamily:"'Inter'"}}))
+        E("label",{style:{fontSize:12,color:"#8a95b8",display:"flex",alignItems:"center",gap:6,fontWeight:500,marginTop:2}},"Game # ",E("input",{type:"number",min:1,max:9,value:s.gameNum,onChange:e=>setS(p=>({...p,gameNum:+e.target.value||1})),style:{width:40,padding:"5px 6px",borderRadius:4,border:"1px solid rgba(255,255,255,.12)",background:"rgba(255,255,255,.06)",color:"#d0d8ee",fontSize:12,fontFamily:"'Inter'"}}))
+      )
+    ),
+
+    // Hero picker
+    picker&&E("div",{className:"hero-picker-wrap"},
+      loading?E("div",{className:"loading-msg"},"Loading heroes from API..."):E(React.Fragment,null,
+        E("div",{className:"filters"},
+          E("div",{style:{position:"relative"}},
+            E("input",{className:"search-input",value:search,onChange:e=>setSearch(e.target.value),placeholder:"Search hero..."}),
+            E("span",{style:{position:"absolute",left:10,top:"50%",transform:"translateY(-50%)",fontSize:13,color:"#3a4260",pointerEvents:"none"}},"⌕")
+          ),
+          ROLES.map(r=>E("button",{key:r,className:`role-btn${role===r?" active":""}`,onClick:()=>setRole(r)},(r!=="All"?(ROLE_ICONS[r]||"")+" ":"")+r.toUpperCase())),
+          cur&&E("div",{className:"turn-ind",style:{background:cur.team==="blue"?"rgba(0,100,255,.1)":"rgba(255,30,60,.1)",border:`1px solid ${cur.team==="blue"?"rgba(0,100,255,.25)":"rgba(255,30,60,.25)"}`,color:cur.team==="blue"?"#4dabff":"#ff5577"}},(cur.team==="blue"?s.blue.tag:s.red.tag)+" "+cur.type.toUpperCase())
+        ),
+        E("div",{className:"hero-grid"},
+          filtered.map(hero=>{
+            const u=used.has(hero.id),act=s.started&&!s.paused&&!s.done&&!u;
+            const avatar=hero.head||hero.image;
+            return E("div",{key:hero.id,className:`hero-cell${act?" available":""}${u?" used":""}`,onClick:()=>act&&pick(hero)},
+              avatar
+                ?E("img",{src:avatar,style:{width:40,height:40,borderRadius:6,objectFit:"cover",filter:u?"grayscale(1)":"none",boxShadow:`0 2px 8px rgba(0,0,0,.3)`}})
+                :E("div",{className:"hero-mini-avatar",style:{width:40,height:40,fontSize:14,background:`linear-gradient(135deg,${hc(hero.id)},${hcl(hero.id)})`,boxShadow:`0 2px 8px ${hc(hero.id)}44`,filter:u?"grayscale(1)":"none"}},ini(hero.name)),
+              E("span",{className:"hero-cell-name"},hero.name),
+              u&&E("div",{className:"hero-used-line"},E("div"))
+            )
+          })
+        )
       )
     )
   );
@@ -394,11 +362,13 @@ function App(){
 function BanC(hero,team,active,i){
   const cls=hero?"ban-circle filled":active?`ban-circle active-${team}`:"ban-circle empty";
   const bg=hero?{background:`linear-gradient(135deg,${hc(hero.id)}77,${hcl(hero.id)}33)`}:{};
-  return React.createElement("div",{key:i,className:cls,style:bg},
-    hero?React.createElement(React.Fragment,null,
-      hero.image?React.createElement("img",{src:hero.image,style:{width:"100%",height:"100%",objectFit:"cover",borderRadius:"50%",position:"absolute"}}):React.createElement("span",{className:"initials"},ini(hero.name)),
-      React.createElement("div",{className:"ban-x"})
-    ):React.createElement("span",{className:"empty-x"},"✕")
+  const E=React.createElement;
+  const avatar=hero?(hero.head||hero.image):null;
+  return E("div",{key:i,className:cls,style:bg},
+    hero?E(React.Fragment,null,
+      avatar?E("img",{src:avatar,style:{width:"100%",height:"100%",objectFit:"cover",borderRadius:"50%",position:"absolute"}}):E("span",{className:"initials"},ini(hero.name)),
+      E("div",{className:"ban-x"})
+    ):E("span",{className:"empty-x"},"✕")
   );
 }
 
@@ -409,8 +379,19 @@ function PickC(hero,team,index,active,teamLogo,teamTag){
   return E("div",{key:index,className:`pick-card${hero?" filled":""}${active?" active":""}`,style:bg},
     hero?E("div",{className:`pick-card-inner${hero.image?" has-img":""}`,style:{padding:hero.image?0:"10px 4px"}},
       hero.image
-        ?E(React.Fragment,null,E("img",{src:hero.image,className:"pick-card-img",style:{animationDelay:(index*.6)+"s"}}),E("div",{className:"pick-card-overlay"},E("div",{className:"pick-name"},hero.name),E("div",{className:"pick-role"},hero.role.toUpperCase())))
-        :E(React.Fragment,null,E("div",{className:"pick-avatar",style:{width:72,height:72,fontSize:26,letterSpacing:1,background:`linear-gradient(135deg,${hc(hero.id)},${hcv(hero.id)},${hcl(hero.id)})`,boxShadow:`0 4px 20px ${hc(hero.id)}55,inset 0 -3px 8px rgba(0,0,0,.3)`,border:`2px solid ${hcl(hero.id)}55`}},ini(hero.name)),E("div",{className:"pick-name"},hero.name),E("div",{className:"pick-role"},hero.role.toUpperCase()))
+        ?E(React.Fragment,null,
+          E("img",{src:hero.image,className:"pick-card-img",style:{animationDelay:(index*.6)+"s"}}),
+          E("div",{className:"pick-card-overlay"},
+            E("div",{className:"pick-name"},hero.name),
+            E("div",{className:"pick-role"},hero.role.toUpperCase())
+          ))
+        :E(React.Fragment,null,
+          hero.head
+            ?E("img",{src:hero.head,style:{width:72,height:72,borderRadius:10,objectFit:"cover",boxShadow:`0 4px 20px rgba(0,0,0,.4)`,border:"2px solid rgba(255,255,255,.1)",marginBottom:8}})
+            :E("div",{className:"pick-avatar",style:{width:72,height:72,fontSize:26,letterSpacing:1,background:`linear-gradient(135deg,${hc(hero.id)},${hcv(hero.id)},${hcl(hero.id)})`,boxShadow:`0 4px 20px ${hc(hero.id)}55,inset 0 -3px 8px rgba(0,0,0,.3)`,border:`2px solid ${hcl(hero.id)}55`}},ini(hero.name)),
+          E("div",{className:"pick-name"},hero.name),
+          E("div",{className:"pick-role"},hero.role.toUpperCase())
+        )
     ):E("div",{className:"pick-card-inner",style:{justifyContent:"center",alignItems:"center"}},
       active
         ?E("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",gap:8,animation:"pulse 2s ease-in-out infinite"}},
