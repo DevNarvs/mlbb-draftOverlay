@@ -24,6 +24,19 @@ function activeSlot(
   return { side: cur.team, type: cur.type, idx: arr.length };
 }
 
+// Shrink player-name font-size tiers by character length so long
+// esports IGNs fit inside the 160px player cell without truncating.
+// Mirrors the tiered approach used by PlayersRow.tsx in the classic
+// theme (which scales the team tag indicator based on tag length).
+function pnameStyle(name: string): { fontSize: number; letterSpacing: number } {
+  const len = name.length;
+  if (len <= 10) return { fontSize: 13, letterSpacing: 2 };
+  if (len <= 12) return { fontSize: 11, letterSpacing: 1.5 };
+  if (len <= 14) return { fontSize: 10, letterSpacing: 1 };
+  if (len <= 17) return { fontSize: 9,  letterSpacing: 0.75 };
+  return           { fontSize: 8,  letterSpacing: 0.5 };
+}
+
 //
 // ─── USER CONTRIBUTION #1 ────────────────────────────────────────────
 // Decide what label sits under the big center timer ("BANNING", "PICKING",
@@ -75,15 +88,16 @@ export default function OverlayBroadcast({ s, cur }: OverlayBroadcastProps) {
   return (
     <div className="overlay-broadcast">
       <div className="draft-section">
-        {/* Captain bar — reuses captainBlue / captainRed from AppState */}
+        {/* Top team bar — blue team name on left, red team name on right.
+            Class name `.coach-bar` is a legacy from the original HTML
+            source; kept for CSS continuity but semantically this is now
+            a team-name strip. */}
         <div className="coach-bar">
           <div className="coach">
-            <span>★</span>
-            <span>{s.captainBlue || s.blue.name}</span>
+            <span>{s.blue.name}</span>
           </div>
           <div className="coach">
-            <span>{s.captainRed || s.red.name}</span>
-            <span>★</span>
+            <span>{s.red.name}</span>
           </div>
         </div>
 
@@ -146,7 +160,7 @@ export default function OverlayBroadcast({ s, cur }: OverlayBroadcastProps) {
           <div className="pbar left-side">
             {s.blue.players.map((name, i) => (
               <div key={`bp${i}`} className="pcell">
-                <span className="pname">{name}</span>
+                <span className="pname" style={pnameStyle(name)}>{name}</span>
               </div>
             ))}
           </div>
@@ -167,7 +181,7 @@ export default function OverlayBroadcast({ s, cur }: OverlayBroadcastProps) {
           <div className="pbar right-side">
             {s.red.players.map((name, i) => (
               <div key={`rp${i}`} className="pcell">
-                <span className="pname">{name}</span>
+                <span className="pname" style={pnameStyle(name)}>{name}</span>
               </div>
             ))}
           </div>

@@ -256,11 +256,14 @@ body.obs-mode *{text-rendering:geometricPrecision;-webkit-font-smoothing:antiali
 .overlay-broadcast .map-float{position:absolute;top:-34px;left:50%;transform:translateX(-50%);padding:6px 22px;background:rgba(15,23,42,0.85);backdrop-filter:blur(6px);border-radius:8px 8px 0 0;text-align:center;white-space:nowrap;z-index:10}
 .overlay-broadcast .mname{font-weight:800;font-size:14px;letter-spacing:2.5px;color:white;text-transform:uppercase}
 .overlay-broadcast .msub{font-size:9px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:2px;text-transform:uppercase}
-/* Team badges — enlarged to 72×72 (1.5× previous). Gap is 20px so the
-   [blue-badge | VS | red-badge] row fits comfortably in the 320px
-   center column with breathing room on both sides. */
+/* Team badges — 72×72 square with 8px internal padding so the logo
+   (or text-tag fallback) has breathing room inside the frame.
+   box-sizing: border-box means content area = 72 - 4 (border) - 16
+   (padding) = 52px, which gives logos a clear margin without making
+   them feel lost. Gap is 20px so the [blue | VS | red] row fits the
+   320px center column with breathing room on both sides. */
 .overlay-broadcast .team-row{display:flex;align-items:center;gap:20px}
-.overlay-broadcast .t-badge{width:72px;height:72px;border-radius:10px;background:var(--boff);border:2px solid var(--bborder);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;overflow:hidden;color:var(--bdark)}
+.overlay-broadcast .t-badge{width:72px;height:72px;padding:8px;border-radius:10px;background:var(--boff);border:2px solid var(--bborder);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;overflow:hidden;color:var(--bdark)}
 /* "VS" label between the two team badges — Bebas Neue gives it the
    tall condensed "scoreboard" look that reads as esports-broadcast. */
 .overlay-broadcast .vs-label{font-family:'Bebas Neue',sans-serif;font-size:34px;font-weight:400;color:var(--bdark);letter-spacing:2px;line-height:1;text-shadow:0 1px 2px rgba(15,23,42,0.08)}

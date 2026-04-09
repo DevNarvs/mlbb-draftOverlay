@@ -55,8 +55,6 @@ export interface AppState {
   // Which overlay skin to render. Toggled from the admin bar.
   theme: OverlayTheme;
   // Broadcast-theme-only fields. Classic theme ignores these.
-  captainBlue: string;
-  captainRed: string;
   mapName: string;
   scoreBlue: number;
   scoreRed: number;
