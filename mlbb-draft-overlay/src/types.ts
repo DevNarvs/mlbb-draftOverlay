@@ -1,6 +1,7 @@
 export type Role = "Tank" | "Fighter" | "Assassin" | "Mage" | "Marksman" | "Support";
 export type TeamSide = "blue" | "red";
 export type ActionType = "ban" | "pick";
+export type OverlayTheme = "classic" | "broadcast";
 
 export interface Hero {
   id: string;
@@ -51,4 +52,13 @@ export interface AppState {
   matchWeek: string;
   sponsors: string[];
   sponsorLogos: string[];
+  // Which overlay skin to render. Toggled from the admin bar.
+  theme: OverlayTheme;
+  // Broadcast-theme-only fields. Classic theme ignores these.
+  captainBlue: string;
+  captainRed: string;
+  mapName: string;
+  scoreBlue: number;
+  scoreRed: number;
+  bestOf: number;
 }

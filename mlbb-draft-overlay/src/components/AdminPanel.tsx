@@ -80,6 +80,25 @@ export default function AdminPanel({
             onChange={e => setS(p => ({ ...p, [t]: { ...p[t], logo: e.target.value } }))}
             placeholder="Logo URL (png/svg)"
           />
+          <input
+            value={t === "blue" ? s.captainBlue : s.captainRed}
+            onChange={e =>
+              setS(p =>
+                t === "blue"
+                  ? { ...p, captainBlue: e.target.value }
+                  : { ...p, captainRed: e.target.value }
+              )
+            }
+            placeholder="Team captain"
+            style={{
+              padding: "8px 12px",
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: 1.2,
+              textTransform: "uppercase",
+              fontFamily: "'Inter', sans-serif",
+            }}
+          />
           <div style={{ fontSize:9,color:"#6a7590",fontWeight:600,letterSpacing:1,marginTop:4 }}>
             PLAYERS <span style={{ opacity: 0.6, fontWeight: 400 }}>(drag ⋮⋮ to reorder)</span>
           </div>

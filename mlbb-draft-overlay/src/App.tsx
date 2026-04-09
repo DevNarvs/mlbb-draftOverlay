@@ -10,6 +10,7 @@ import PlayersRow from "./components/PlayersRow";
 import AdminBar from "./components/AdminBar";
 import AdminPanel from "./components/AdminPanel";
 import HeroPicker from "./components/HeroPicker";
+import OverlayBroadcast from "./components/OverlayBroadcast";
 
 // Apply a draft action (ban/pick) to state, advance step
 function sel(st: AppState, hero: Hero): AppState {
@@ -40,6 +41,28 @@ export default function App() {
     matchWeek: "MATCH 1 • BO5",
     sponsors: ["Smart","Globe","Moonton"],
     sponsorLogos: ["","",""],
+    // ─── Theme + broadcast-mode fields ───────────────────────────
+    // "classic" = existing dark dramatic look | "broadcast" = light/compact
+    theme: "classic",
+    //
+    // ─── USER CONTRIBUTION #2 ────────────────────────────────────
+    // These fields drive the broadcast theme's top captain bar, map
+    // banner, and series-score pips. Pick defaults that make sense
+    // for your first stream. Suggested fields:
+    //   captainBlue / captainRed → team captain (IGL) for each team
+    //   mapName                  → current map name (shown in the top banner)
+    //   scoreBlue / scoreRed     → series wins so far
+    //   bestOf                   → format length (3, 5, or 7)
+    //
+    // TODO(you): replace these placeholders with your preferred defaults.
+    //
+    captainBlue: "DOMENGKITE",
+    captainRed:  "KYLE",
+    mapName:     "FLYING CLOUD",
+    scoreBlue:   0,
+    scoreRed:    0,
+    bestOf:      5,
+    // ─────────────────────────────────────────────────────────────
   });
 
   const [search, setSearch] = useState("");
@@ -184,12 +207,16 @@ export default function App() {
     <div>
       {toast && <div className="toast">{toast}</div>}
 
-      <div className="overlay">
-        <Header blue={s.blue} red={s.red} />
-        <BansRow blueBans={s.blue.bans} redBans={s.red.bans} cur={cur} />
-        <PicksRow s={s} cur={cur} />
-        <PlayersRow blue={s.blue} red={s.red} cur={cur} />
-      </div>
+      {s.theme === "classic" ? (
+        <div className="overlay">
+          <Header blue={s.blue} red={s.red} />
+          <BansRow blueBans={s.blue.bans} redBans={s.red.bans} cur={cur} />
+          <PicksRow s={s} cur={cur} />
+          <PlayersRow blue={s.blue} red={s.red} cur={cur} />
+        </div>
+      ) : (
+        <OverlayBroadcast s={s} cur={cur} />
+      )}
 
       <AdminBar
         s={s}

@@ -75,6 +75,15 @@ export default function AdminBar({
         <span style={{ fontSize:12,color:"#e09900" }}>⚠ {heroCount} heroes (fallback — no portraits)</span>
       )}
       <div style={{ marginLeft:"auto",display:"flex",gap:8 }}>
+        <button
+          className="abtn ghost"
+          onClick={() =>
+            setS(p => ({ ...p, theme: p.theme === "classic" ? "broadcast" : "classic" }))
+          }
+          title="Switch between classic and broadcast overlay styles"
+        >
+          {s.theme === "classic" ? "◐ CLASSIC" : "◑ BROADCAST"}
+        </button>
         <button className="abtn ghost" onClick={() => setAdmin(p => !p)}>
           {admin ? "✕ CLOSE SETTINGS" : "⚙ SETTINGS"}
         </button>
