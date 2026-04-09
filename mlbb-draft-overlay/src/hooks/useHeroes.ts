@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
-import { PORTRAIT_MAP, ROLE_MAP } from "../constants";
+import { PORTRAIT_MAP, ROLE_MAP, banRateOf, tierRankOf } from "../constants";
 import type { Hero, Role } from "../types";
+
+// Sort: primary by meta tier (S → A → B → C → D → unranked),
+// secondary by ban rate descending (most-feared first within tier),
+// tertiary alphabetical as a stable tiebreaker.
+function sortByTierThenName(a: Hero, b: Hero): number {
+  const tierDiff = tierRankOf(a.name) - tierRankOf(b.name);
+  if (tierDiff !== 0) return tierDiff;
+  const banDiff = banRateOf(b.name) - banRateOf(a.name); // b - a for DESCENDING
+  if (banDiff !== 0) return banDiff;
+  return a.name.localeCompare(b.name);
+}
 
 interface ApiRecord {
   data: {
@@ -55,7 +66,7 @@ export function useHeroes() {
             image: PORTRAIT_MAP[e.name] ?? null,
             smallmap: e.smallmap,
           }))
-          .sort((a, b) => a.name.localeCompare(b.name));
+          .sort(sortByTierThenName);
         setHeroes(list);
         setSource("local");
         setLoading(false);
@@ -79,7 +90,7 @@ export function useHeroes() {
                 image: PORTRAIT_MAP[r.data.hero.data.name] ?? null,
                 smallmap: null,
               }))
-              .sort((a, b) => a.name.localeCompare(b.name));
+              .sort(sortByTierThenName);
             setHeroes(list);
             setSource("api");
             setLoading(false);
@@ -96,7 +107,7 @@ export function useHeroes() {
                 image: PORTRAIT_MAP[name] ?? null,
                 smallmap: null,
               }))
-              .sort((a, b) => a.name.localeCompare(b.name));
+              .sort(sortByTierThenName);
             setHeroes(list);
             setSource("fallback");
             setLoading(false);

@@ -1,7 +1,18 @@
 import { useMemo } from "react";
-import { ROLES, ROLE_ICONS } from "../constants";
+import { HERO_TIER, ROLES, ROLE_ICONS } from "../constants";
+import type { HeroTier } from "../constants";
 import type { AppState, DraftStep, Hero, Role } from "../types";
 import { hc, hcl, ini } from "../utils";
+
+// Color coding for tier badges — follows MOBA community tier list
+// conventions so viewers read them intuitively without a legend.
+const TIER_COLOR: Record<HeroTier, string> = {
+  S: "#F59E0B", // gold — meta-defining
+  A: "#94A3B8", // silver — strong
+  B: "#60A5FA", // muted blue — comfort
+  C: "#6EE7B7", // muted green — niche
+  D: "#FCA5A5", // muted red — rarely seen
+};
 
 interface HeroPickerProps {
   s: AppState;
@@ -74,12 +85,39 @@ export default function HeroPicker({
               const act = s.started && !s.paused && !s.done && !u;
               // Prefer local smallmap (offline-safe), then remote head, then PORTRAIT_MAP override.
               const avatar = hero.smallmap || hero.head || hero.image;
+              const tier = HERO_TIER[hero.name];
               return (
                 <div
                   key={hero.id}
                   className={`hero-cell${act ? " available" : ""}${u ? " used" : ""}`}
                   onClick={() => act && onPick(hero)}
                 >
+                  {tier && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 4,
+                        right: 4,
+                        width: 16,
+                        height: 16,
+                        borderRadius: 3,
+                        background: TIER_COLOR[tier],
+                        color: "#0c1018",
+                        fontSize: 10,
+                        fontWeight: 900,
+                        fontFamily: "'Inter', sans-serif",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        lineHeight: 1,
+                        boxShadow: "0 1px 3px rgba(0,0,0,0.4)",
+                        zIndex: 2,
+                        pointerEvents: "none",
+                      }}
+                    >
+                      {tier}
+                    </div>
+                  )}
                   {avatar ? (
                     <img
                       src={avatar}
