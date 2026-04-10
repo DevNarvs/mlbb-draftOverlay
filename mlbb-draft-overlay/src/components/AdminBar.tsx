@@ -1,6 +1,6 @@
 import type { AppState } from "../types";
 import type { HeroSource } from "../hooks/useHeroes";
-import { DT } from "../constants";
+import { DT, nextDraftFormat, draftFormatLabel } from "../constants";
 
 interface AdminBarProps {
   s: AppState;
@@ -79,11 +79,11 @@ export default function AdminBar({
           className="abtn ghost"
           disabled={s.started && !s.done}
           onClick={() =>
-            setS(p => ({ ...p, draftFormat: p.draftFormat === "5ban" ? "3ban" : "5ban" }))
+            setS(p => ({ ...p, draftFormat: nextDraftFormat(p.draftFormat) }))
           }
-          title="Switch between 5-ban and 3-ban draft formats"
+          title="Switch draft format: 5-ban / 3-ban / custom lobby"
         >
-          {s.draftFormat === "5ban" ? "5 BAN" : "3 BAN"}
+          {draftFormatLabel(s.draftFormat)}
         </button>
         <button
           className="abtn ghost"

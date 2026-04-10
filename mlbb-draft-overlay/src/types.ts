@@ -2,7 +2,7 @@ export type Role = "Tank" | "Fighter" | "Assassin" | "Mage" | "Marksman" | "Supp
 export type TeamSide = "blue" | "red";
 export type ActionType = "ban" | "pick";
 export type OverlayTheme = "classic" | "broadcast";
-export type DraftFormat = "5ban" | "3ban";
+export type DraftFormat = "5ban" | "3ban" | "custom";
 
 export interface Hero {
   id: string;

@@ -250,12 +250,42 @@ const DRAFT_SEQ_3BAN: DraftStep[] = [
   {phase:"pick2",type:"pick",team:"blue",label:"PICK PHASE 2"},{phase:"pick2",type:"pick",team:"red",label:"PICK PHASE 2"},
 ];
 
+// Custom lobby format: 3 bans + 5 picks per side = 16 steps
+const DRAFT_SEQ_CUSTOM: DraftStep[] = [
+  // Ban phase 1 — 2 per side (alternating blue-red)
+  {phase:"ban1",type:"ban",team:"blue",label:"BAN PHASE 1"},{phase:"ban1",type:"ban",team:"red",label:"BAN PHASE 1"},
+  {phase:"ban1",type:"ban",team:"blue",label:"BAN PHASE 1"},{phase:"ban1",type:"ban",team:"red",label:"BAN PHASE 1"},
+  // Pick phase 1 — 3 per side (snake: 1-2-2-1-1-1)
+  {phase:"pick1",type:"pick",team:"blue",label:"PICK PHASE 1"},{phase:"pick1",type:"pick",team:"red",label:"PICK PHASE 1"},
+  {phase:"pick1",type:"pick",team:"red",label:"PICK PHASE 1"},{phase:"pick1",type:"pick",team:"blue",label:"PICK PHASE 1"},
+  {phase:"pick1",type:"pick",team:"blue",label:"PICK PHASE 1"},{phase:"pick1",type:"pick",team:"red",label:"PICK PHASE 1"},
+  // Ban phase 2 — 1 per side (red first)
+  {phase:"ban2",type:"ban",team:"red",label:"BAN PHASE 2"},{phase:"ban2",type:"ban",team:"blue",label:"BAN PHASE 2"},
+  // Pick phase 2 — 2 per side (snake: red-blue-blue-red)
+  {phase:"pick2",type:"pick",team:"red",label:"PICK PHASE 2"},{phase:"pick2",type:"pick",team:"blue",label:"PICK PHASE 2"},
+  {phase:"pick2",type:"pick",team:"blue",label:"PICK PHASE 2"},{phase:"pick2",type:"pick",team:"red",label:"PICK PHASE 2"},
+];
+
+const DRAFT_FORMATS: DraftFormat[] = ["5ban", "3ban", "custom"];
+
 export function getDraftSeq(format: DraftFormat): DraftStep[] {
-  return format === "3ban" ? DRAFT_SEQ_3BAN : DRAFT_SEQ_5BAN;
+  if (format === "3ban") return DRAFT_SEQ_3BAN;
+  if (format === "custom") return DRAFT_SEQ_CUSTOM;
+  return DRAFT_SEQ_5BAN;
 }
 
 export function getBansPerSide(format: DraftFormat): number {
-  return format === "3ban" ? 3 : 5;
+  return format === "5ban" ? 5 : 3;
+}
+
+export function nextDraftFormat(current: DraftFormat): DraftFormat {
+  const i = DRAFT_FORMATS.indexOf(current);
+  return DRAFT_FORMATS[(i + 1) % DRAFT_FORMATS.length];
+}
+
+export function draftFormatLabel(format: DraftFormat): string {
+  if (format === "custom") return "CUSTOM";
+  return format === "5ban" ? "5 BAN" : "3 BAN";
 }
 
 export const DT = 30;
