@@ -1,4 +1,4 @@
-import type { DraftStep, Role } from "./types";
+import type { DraftFormat, DraftStep, Role } from "./types";
 
 // Role map for heroes (fallback)
 export const ROLE_MAP: Record<string, Role> = {
@@ -215,16 +215,47 @@ export function banRateOf(heroName: string): number {
   return HERO_STATS[heroName]?.ban ?? 0;
 }
 
-export const DRAFT_SEQ: DraftStep[] = [
+// 5-ban format (standard MPL): 5 bans + 5 picks per side = 20 steps
+const DRAFT_SEQ_5BAN: DraftStep[] = [
+  // Ban phase 1 — 3 per side
   {phase:"ban1",type:"ban",team:"blue",label:"BAN PHASE 1"},{phase:"ban1",type:"ban",team:"red",label:"BAN PHASE 1"},
   {phase:"ban1",type:"ban",team:"blue",label:"BAN PHASE 1"},{phase:"ban1",type:"ban",team:"red",label:"BAN PHASE 1"},
+  {phase:"ban1",type:"ban",team:"blue",label:"BAN PHASE 1"},{phase:"ban1",type:"ban",team:"red",label:"BAN PHASE 1"},
+  // Pick phase 1 — 2 per side (snake)
   {phase:"pick1",type:"pick",team:"blue",label:"PICK PHASE 1"},{phase:"pick1",type:"pick",team:"red",label:"PICK PHASE 1"},
   {phase:"pick1",type:"pick",team:"red",label:"PICK PHASE 1"},{phase:"pick1",type:"pick",team:"blue",label:"PICK PHASE 1"},
+  // Ban phase 2 — 2 per side
   {phase:"ban2",type:"ban",team:"red",label:"BAN PHASE 2"},{phase:"ban2",type:"ban",team:"blue",label:"BAN PHASE 2"},
+  {phase:"ban2",type:"ban",team:"red",label:"BAN PHASE 2"},{phase:"ban2",type:"ban",team:"blue",label:"BAN PHASE 2"},
+  // Pick phase 2 — 2 per side (snake)
   {phase:"pick2",type:"pick",team:"red",label:"PICK PHASE 2"},{phase:"pick2",type:"pick",team:"blue",label:"PICK PHASE 2"},
   {phase:"pick2",type:"pick",team:"blue",label:"PICK PHASE 2"},{phase:"pick2",type:"pick",team:"red",label:"PICK PHASE 2"},
-  {phase:"ban3",type:"ban",team:"red",label:"BAN PHASE 3"},{phase:"ban3",type:"ban",team:"blue",label:"BAN PHASE 3"},
+  // Pick phase 3 — 1 per side
   {phase:"pick3",type:"pick",team:"red",label:"PICK PHASE 3"},{phase:"pick3",type:"pick",team:"blue",label:"PICK PHASE 3"},
 ];
+
+// 3-ban format: 3 bans + 5 picks per side = 16 steps
+const DRAFT_SEQ_3BAN: DraftStep[] = [
+  // Ban phase 1 — 2 per side
+  {phase:"ban1",type:"ban",team:"blue",label:"BAN PHASE 1"},{phase:"ban1",type:"ban",team:"red",label:"BAN PHASE 1"},
+  {phase:"ban1",type:"ban",team:"blue",label:"BAN PHASE 1"},{phase:"ban1",type:"ban",team:"red",label:"BAN PHASE 1"},
+  // Pick phase 1 — 3 per side (snake: 1-2-2-1)
+  {phase:"pick1",type:"pick",team:"blue",label:"PICK PHASE 1"},{phase:"pick1",type:"pick",team:"red",label:"PICK PHASE 1"},
+  {phase:"pick1",type:"pick",team:"red",label:"PICK PHASE 1"},{phase:"pick1",type:"pick",team:"blue",label:"PICK PHASE 1"},
+  {phase:"pick1",type:"pick",team:"blue",label:"PICK PHASE 1"},{phase:"pick1",type:"pick",team:"red",label:"PICK PHASE 1"},
+  // Ban phase 2 — 1 per side
+  {phase:"ban2",type:"ban",team:"blue",label:"BAN PHASE 2"},{phase:"ban2",type:"ban",team:"red",label:"BAN PHASE 2"},
+  // Pick phase 2 — 2 per side (alternating)
+  {phase:"pick2",type:"pick",team:"blue",label:"PICK PHASE 2"},{phase:"pick2",type:"pick",team:"red",label:"PICK PHASE 2"},
+  {phase:"pick2",type:"pick",team:"blue",label:"PICK PHASE 2"},{phase:"pick2",type:"pick",team:"red",label:"PICK PHASE 2"},
+];
+
+export function getDraftSeq(format: DraftFormat): DraftStep[] {
+  return format === "3ban" ? DRAFT_SEQ_3BAN : DRAFT_SEQ_5BAN;
+}
+
+export function getBansPerSide(format: DraftFormat): number {
+  return format === "3ban" ? 3 : 5;
+}
 
 export const DT = 30;

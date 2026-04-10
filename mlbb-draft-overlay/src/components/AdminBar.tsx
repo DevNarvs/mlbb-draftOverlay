@@ -77,6 +77,16 @@ export default function AdminBar({
       <div style={{ marginLeft:"auto",display:"flex",gap:8 }}>
         <button
           className="abtn ghost"
+          disabled={s.started && !s.done}
+          onClick={() =>
+            setS(p => ({ ...p, draftFormat: p.draftFormat === "5ban" ? "3ban" : "5ban" }))
+          }
+          title="Switch between 5-ban and 3-ban draft formats"
+        >
+          {s.draftFormat === "5ban" ? "5 BAN" : "3 BAN"}
+        </button>
+        <button
+          className="abtn ghost"
           onClick={() =>
             setS(p => ({ ...p, theme: p.theme === "classic" ? "broadcast" : "classic" }))
           }

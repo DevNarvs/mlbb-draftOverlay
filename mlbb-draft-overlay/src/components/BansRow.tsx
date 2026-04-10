@@ -29,13 +29,14 @@ interface BansRowProps {
   blueBans: Hero[];
   redBans: Hero[];
   cur: DraftStep | null;
+  banSlots: number;
 }
 
-export default function BansRow({ blueBans, redBans, cur }: BansRowProps) {
+export default function BansRow({ blueBans, redBans, cur, banSlots }: BansRowProps) {
   return (
     <div className="bans-row">
       <div className="bans-side">
-        {Array.from({ length: 5 }).map((_, i) => (
+        {Array.from({ length: banSlots }).map((_, i) => (
           <BanCircle
             key={i}
             hero={blueBans[i]}
@@ -46,7 +47,7 @@ export default function BansRow({ blueBans, redBans, cur }: BansRowProps) {
       </div>
       <div className="bans-center">BANS</div>
       <div className="bans-side">
-        {Array.from({ length: 5 }).map((_, i) => (
+        {Array.from({ length: banSlots }).map((_, i) => (
           <BanCircle
             key={i}
             hero={redBans[i]}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getBansPerSide } from "../constants";
 import type { ActionType, AppState, DraftStep, Hero, TeamSide } from "../types";
 
 interface OverlayBroadcastProps {
@@ -108,11 +109,11 @@ export default function OverlayBroadcast({ s, cur }: OverlayBroadcastProps) {
             .bans-row / .bans-side / .bans-center which are unscoped. */}
         <div className="b-bans">
           <div className="b-bans-half left-side">
-            {renderBanCells(s, "blue", activeBan)}
+            {renderBanCells(s, "blue", activeBan, getBansPerSide(s.draftFormat))}
           </div>
           <div className="b-bans-label">BANS</div>
           <div className="b-bans-half right-side">
-            {renderBanCells(s, "red", activeBan)}
+            {renderBanCells(s, "red", activeBan, getBansPerSide(s.draftFormat))}
           </div>
         </div>
 
@@ -232,9 +233,10 @@ function renderBanCells(
   s: AppState,
   side: TeamSide,
   activeBan: { side: TeamSide; idx: number } | null,
+  banSlots: number,
 ) {
   const team = s[side];
-  return Array.from({ length: 5 }).map((_, i) => {
+  return Array.from({ length: banSlots }).map((_, i) => {
     const hero = team.bans[i];
     const isActive = activeBan?.side === side && activeBan.idx === i;
     const portrait = hero ? heroPortrait(hero) : null;

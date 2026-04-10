@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { DRAFT_SEQ, DT } from "./constants";
+import { getDraftSeq, getBansPerSide, DT } from "./constants";
 import { useHeroes } from "./hooks/useHeroes";
 import type { AppState, Hero, Role } from "./types";
 
@@ -14,7 +14,8 @@ import OverlayBroadcast from "./components/OverlayBroadcast";
 
 // Apply a draft action (ban/pick) to state, advance step
 function sel(st: AppState, hero: Hero): AppState {
-  const a = DRAFT_SEQ[st.step];
+  const seq = getDraftSeq(st.draftFormat);
+  const a = seq[st.step];
   if (!a) return { ...st, done: true };
   const k = a.type === "ban" ? "bans" : "picks";
   const nx = st.step + 1;
@@ -23,7 +24,7 @@ function sel(st: AppState, hero: Hero): AppState {
     [a.team]: { ...st[a.team], [k]: [...st[a.team][k], hero] },
     step: nx,
     timer: st.td,
-    done: nx >= DRAFT_SEQ.length,
+    done: nx >= seq.length,
     history: [...st.history, { hero, action: a.type, team: a.team }],
   };
 }
@@ -36,6 +37,7 @@ export default function App() {
     blue: { picks: [], bans: [], name: "AURORA", tag: "RORA", logo: "", players: ["DOMENGKITE","YUE","DEMONKITE","EDWARD","LIGHT"] },
     red:  { picks: [], bans: [], name: "FALCON", tag: "FLCN", logo: "", players: ["KYLE","FLAP","SUPERMARCO","OWOWEN","HADJI"] },
     timer: DT, td: DT, started: false, paused: false, done: false, history: [],
+    draftFormat: "5ban",
     gameNum: 2,
     matchType: "REGULAR SEASON",
     matchWeek: "MATCH 1 • BO5",
@@ -73,7 +75,8 @@ export default function App() {
     document.body.classList.toggle("obs-mode", obsMode);
   }, [obsMode]);
 
-  const cur = s.step >= 0 && s.step < DRAFT_SEQ.length ? DRAFT_SEQ[s.step] : null;
+  const seq = getDraftSeq(s.draftFormat);
+  const cur = s.step >= 0 && s.step < seq.length ? seq[s.step] : null;
 
   const used = useMemo(() => {
     const st = new Set<string>();
@@ -154,7 +157,8 @@ export default function App() {
             [...p.blue.picks, ...p.red.picks, ...p.blue.bans, ...p.red.bans].map(x => x.id)
           );
           const av = heroes.filter(h => !u.has(h.id));
-          if (!av.length || p.step >= DRAFT_SEQ.length) return { ...p, done: true };
+          const pSeq = getDraftSeq(p.draftFormat);
+          if (!av.length || p.step >= pSeq.length) return { ...p, done: true };
           return sel(p, av[Math.floor(Math.random() * av.length)]);
         }
         return { ...p, timer: p.timer - 1 };
@@ -200,7 +204,7 @@ export default function App() {
       {s.theme === "classic" ? (
         <div className="overlay">
           <Header blue={s.blue} red={s.red} />
-          <BansRow blueBans={s.blue.bans} redBans={s.red.bans} cur={cur} />
+          <BansRow blueBans={s.blue.bans} redBans={s.red.bans} cur={cur} banSlots={getBansPerSide(s.draftFormat)} />
           <PicksRow s={s} cur={cur} />
           <PlayersRow blue={s.blue} red={s.red} cur={cur} />
         </div>
